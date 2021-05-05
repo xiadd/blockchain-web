@@ -40,9 +40,10 @@ export default function AssetItem({ asset }) {
           <div className="card-text" style={{ height: 100 }}>
             {showChart ? <ResponsiveLine
               animate
+              enableArea
               enableSlices="x"
               curve="basis"
-              colors={[(+asset.changePercent24Hr > 0) ? '#dc3545' : '#198754']}
+              colors={[(+asset.changePercent24Hr > 0) ? 'rgba(220, 53, 69, .5)' : 'rgba(25, 135, 84, .5)']}
               data={chartData}
               theme={{
                 crosshair: {
@@ -76,7 +77,7 @@ export default function AssetItem({ asset }) {
                 </div>;
               }}
             /> : <div className="d-flex justify-content-center align-items-center" style={{ height: 100 }}>
-              <button className="btn btn-dark btn-sm" onClick={() => setShowChart(true)}>Click to show chart</button>  
+              <button className="btn btn-light btn-sm" onClick={() => setShowChart(true)}>Click to show chart</button>  
             </div>}
           </div>
         </div>
