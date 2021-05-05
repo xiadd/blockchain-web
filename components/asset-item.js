@@ -2,65 +2,9 @@ import { useEffect, useState } from 'react'
 import { ResponsiveLine } from '@nivo/line'
 import { linearGradientDef } from '@nivo/core'
 
-const data = [
-  {
-    "id": "japan",
-    "data": [
-      {
-        "x": "plane",
-        "y": 65
-      },
-      {
-        "x": "helicopter",
-        "y": 245
-      },
-      {
-        "x": "boat",
-        "y": 276
-      },
-      {
-        "x": "train",
-        "y": 210
-      },
-      {
-        "x": "subway",
-        "y": 44
-      },
-      {
-        "x": "bus",
-        "y": 209
-      },
-      {
-        "x": "car",
-        "y": 205
-      },
-      {
-        "x": "moto",
-        "y": 181
-      },
-      {
-        "x": "bicycle",
-        "y": 15
-      },
-      {
-        "x": "horse",
-        "y": 234
-      },
-      {
-        "x": "skateboard",
-        "y": 197
-      },
-      {
-        "x": "others",
-        "y": 125
-      }
-    ]
-  }
-]
-
-
 export default function AssetItem({ asset }) {
   const [chartData, setChartData] = useState([])
+  const [showChart, setShowChart] = useState(false)
   const fetchData = async () => {
     const res = await fetch(`https://api.coincap.io/v2/assets/${asset.id}/history?interval=d1`)
     const _data = await res.json()
@@ -74,8 +18,8 @@ export default function AssetItem({ asset }) {
     }
   }
   useEffect(() => {
-    fetchData()
-  }, [])
+    if (showChart) fetchData()
+  }, [showChart])
   return (
     <div className="col-xl-4 col-md-6 mb-3">
       <div className="card shadow-sm border-0">
@@ -94,7 +38,7 @@ export default function AssetItem({ asset }) {
             Change: <span className={(+asset.changePercent24Hr > 0) ? 'text-danger' : 'text-success'}>{(+asset.changePercent24Hr).toFixed(2)}%</span>
           </div>
           <div className="card-text" style={{ height: 100 }}>
-            <ResponsiveLine
+            {showChart ? <ResponsiveLine
               animate
               enableSlices="x"
               curve="basis"
@@ -131,7 +75,9 @@ export default function AssetItem({ asset }) {
                   </span>
                 </div>;
               }}
-            />
+            /> : <div className="d-flex justify-content-center align-items-center" style={{ height: 100 }}>
+              <button className="btn btn-dark btn-sm" onClick={() => setShowChart(true)}>Click to show chart</button>  
+            </div>}
           </div>
         </div>
       </div>
