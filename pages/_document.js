@@ -16,7 +16,15 @@ class MyDocument extends Document {
             crossOrigin="anonymous"
           />
         </Head>
-        <body className="bg-light">
+        <body style={{ backgroundColor: '#f5f7fb' }}>
+          <div
+            className="bg-white border-bottom"
+            style={{ height: 60, width: '100%' }}
+          >
+            <div className="container d-flex align-items-center h-100">
+              blockchain
+            </div>
+          </div>
           <Main />
           <NextScript />
         </body>

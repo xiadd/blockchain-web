@@ -21,8 +21,8 @@ export default function AssetItem({ asset }) {
     if (showChart) fetchData()
   }, [showChart])
   return (
-    <div className="col-xl-4 col-md-6 mb-3">
-      <div className="card shadow-sm border-0">
+    <div className="col-sm-6 col-lg-3 mb-3">
+      <div className="card">
         <div
           className="card-body p-0"
         >
@@ -31,7 +31,7 @@ export default function AssetItem({ asset }) {
               width={100}
               height={100}
               src={`https://static.coincap.io/assets/icons/${asset.symbol?.toLowerCase()}@2x.png`}
-              style={{ position: 'absolute', left: 0, top: 0, opacity: .1, pointerEvents: 'none', userSelect: 'none' }}
+              style={{ position: 'absolute', left: 0, top: 0, opacity: .05, pointerEvents: 'none', userSelect: 'none' }}
             />
             {asset.name}
           </h5>
