@@ -23,18 +23,20 @@ export default function AssetItem({ asset }) {
   return (
     <div className="col-xl-4 col-md-6 mb-3">
       <div className="card shadow-sm border-0">
-        <div className="card-body p-0">
+        <div
+          className="card-body p-0"
+        >
           <h5 className="card-title px-2 pt-2">
             <img
-              width={24}
-              height={24}
+              width={100}
+              height={100}
               src={`https://static.coincap.io/assets/icons/${asset.symbol?.toLowerCase()}@2x.png`}
-              style={{ marginRight: '.5rem' }}
+              style={{ position: 'absolute', left: 0, top: 0, opacity: .1, pointerEvents: 'none', userSelect: 'none' }}
             />
             {asset.name}
           </h5>
           <div className="card-subtitle mb-2 text-muted px-2">
-            Price: {(+asset.priceUsd).toFixed(2)}{'  '}
+            Price: <b>{(+asset.priceUsd).toFixed(2)}{'  '}</b>
             Change: <span className={(+asset.changePercent24Hr > 0) ? 'text-danger' : 'text-success'}>{(+asset.changePercent24Hr).toFixed(2)}%</span>
           </div>
           <div className="card-text" style={{ height: 100 }}>
