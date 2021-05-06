@@ -1,18 +1,21 @@
 import Head from 'next/head'
+import { CardsGrid, Container } from '@mantine/core'
 import AssetItem from '../components/asset-item'
 
 export default function Home({ data }) {
   return (
-    <div className="container p-3">
+    <Container
+      size="xl"
+    >
       <Head>
         <title>blockchain-web主页</title>
       </Head>
-      <div className="row">
+      <CardsGrid cardsPerRow={4}>
         {data?.data?.map(asset => (
           <AssetItem asset={asset} key={asset.id} />
         ))}
-      </div>
-    </div>
+      </CardsGrid>
+    </Container>
   )
 }
 
