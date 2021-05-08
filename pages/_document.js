@@ -1,5 +1,4 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
-import { Container } from '@mantine/core'
 import { SheetsRegistry, JssProvider, createGenerateId } from 'react-jss';
 
 export default class _Document extends Document {
@@ -33,9 +32,7 @@ export default class _Document extends Document {
   render() {
     return (
       <Html>
-        <Head>
-          <title>blockchain-web</title>
-        </Head>
+        <Head />
         <body style={{ backgroundColor: '#fafafa' }}>
           <div
             style={{

@@ -19,7 +19,7 @@ export default function Home({ data }) {
   )
 }
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   const res = await fetch('https://api.coincap.io/v2/assets?limit=24')
   const data = await res.json()
   return {

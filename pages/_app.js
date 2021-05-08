@@ -16,7 +16,7 @@ export default function App(props) {
   return (
     <>
       <Head>
-        <title>Mantine next example</title>
+        <title>blockchain web</title>
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
       </Head>
       <MantineProvider
